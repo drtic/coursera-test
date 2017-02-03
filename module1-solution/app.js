@@ -1,13 +1,31 @@
-(function(){
+(function() {
 'use strict';
 
-M1Controller.$inject = ['$scope', '$filter'];
-function M1Controller($scope, $filter) {
-  $scope.name = "AAAAA";
+LunchCheckController.$inject = ['$scope', '$filter'];
+function LunchCheckController($scope, $filter) {
+  $scope.name = "A,A,A,,A,A";
 
+  $scope.LunchCheck = function() {
+    if( countItems($scope.name) <= 3) {
+        $scope.name1 = "Enjoy!";
+        $scope.style = "s1";
+      }
+      else {
+        $scope.name1 = "To much !";
+        $scope.style = "s2";
+      }
+  }
 }
 
-angular.module('module1-App', [])
-.controller('M1Controller', M1Controller)
+function countItems(string) {
+  var c = string.split(",")
+  //.length;
+  .filter(function(x){return x.length != 0}).length;
+  console.log(c);
+  return c;
+}
+
+angular.module('LunchCheck', [])
+  .controller('LunchCheckController', LunchCheckController)
 
 })();
