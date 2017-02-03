@@ -1,0 +1,20 @@
+.message {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.sOk {
+  color: green;
+}
+
+.sErr {
+  color: red;
+}
+
+input.err{
+  border-color: red;
+}
+
+input.ok{
+  border-color: green;
+}
