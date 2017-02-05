@@ -8,6 +8,7 @@
   function CounterController($scope){
     $scope.onceCounter = 0;
     $scope.counter = 0;
+    $scope.name = "JJJ";
 
     $scope.showNumberOfWatchers = function() {
           console.log("Number of Watchers: ", $scope.$$watchersCount );
@@ -22,15 +23,19 @@
       $scope.counter++;
     };
 
-    $scope.$watch('onceCounter', function (newValue, oldValue){
-      console.log("onceCounter oldValue: ", oldValue);
-      console.log("onceCounter newValue: ", newValue);
-    });
+    $scope.$watch(function() {
+      console.log("Digest loop fired!");
+    } );
 
-    $scope.$watch('counter', function (newValue, oldValue){
-      console.log("counter oldValue: ", oldValue);
-      console.log("counter newValue: ", newValue);
-    });
+    // $scope.$watch('onceCounter', function (newValue, oldValue){
+    //   console.log("onceCounter oldValue: ", oldValue);
+    //   console.log("onceCounter newValue: ", newValue);
+    // });
+    //
+    // $scope.$watch('counter', function (newValue, oldValue){
+    //   console.log("counter oldValue: ", oldValue);
+    //   console.log("counter newValue: ", newValue);
+    // });
 
   };
 

@@ -13,12 +13,18 @@
     <div >
       <button ng-click='showNumberOfWatchers()'>
         Log# of Wathers</button>
+        <input type="text" ng-model="name"/>
     </div>
+
     <div>
       <button ng-click="countOnce()">Up once Counter (once) </button>
     </div>
     <div>
       <button ng-click="upCounter()">Up Counter </button>
+    </div>
+    <div>
+      onceCounter: {{onceCounter + '!'}} <br/>
+      counter: {{counter}}
     </div>
   </body>
 </html>
