@@ -1,6 +1,11 @@
 (function(){
 'use strict';
 
+  var shoppingList = [
+    "A", "B", "C----"
+  ];
+
+
   angular.module('CounterApp', [])
     .controller( 'CounterController', CounterController);
 
@@ -9,6 +14,7 @@
     $scope.onceCounter = 0;
     $scope.counter = 0;
     $scope.name = "JJJ";
+    $scope.sl = shoppingList;
 
     $scope.showNumberOfWatchers = function() {
           console.log("Number of Watchers: ", $scope.$$watchersCount );
@@ -21,7 +27,7 @@
 
     $scope.upCounter = function () {
       $timeout( function (){
-        console.log("counter called");    
+        console.log("counter called");
       }, 1000);
     };
 
