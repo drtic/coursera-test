@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html ng-app='CounterApp'>
+<html ng-app='ControllerApp'>
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <style> body { font-size: 1.2em; }</style>
 
-    <title>ng-repeat</title>
+    <title>Controller as syntax</title>
   </head>
-  <body ng-controller="CounterController">
-    <h1>The Digest Cycle</h1>
-    <div >
-      <button ng-click='showNumberOfWatchers()'>
-        Log# of Wathers</button>
-        <input type="text" ng-model="name"/>
+  <body >
+    <h1>Controller As Syntax</h1>
+    <div ng-controller="ParentController1">
+      <div ng-controller="ChildController1">
+      </div>
     </div>
-
-    <div>
-      <button ng-click="countOnce()">Up once Counter (once) </button>
+    <div ng-controller="ParentController2 as parent">
+      Parent value: {{ parent.value }}
+      <div ng-controller="ChildController2 as child">
+        Child value: {{ child.value }}
+      </div>
     </div>
-    <div>
-      <button ng-click="upCounter()">Up Counter </button>
-    </div>
-    <div>
-      onceCounter: {{onceCounter + '!'}} <br/>
-      counter: {{counter}}
-    </div>
-    <ul>
-      <li ng-repeat="item in sl">{{$index +1}}.{{ item }}</li>
-    </ul>
-
   </body>
 </html>

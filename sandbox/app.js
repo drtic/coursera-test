@@ -6,59 +6,34 @@
   ];
 
 
-  angular.module('CounterApp', [])
-    .controller( 'CounterController', CounterController);
+  angular.module('ControllerApp', [])
+    .controller( 'ParentController1', ParentController1)
+    .controller('ChildController1', ChildController1)
+    .controller( 'ParentController2', ParentController2)
+    .controller('ChildController2', ChildController2);
 
-  CounterController.$inject = ['$scope', '$timeout'];
-  function CounterController($scope){
-    $scope.onceCounter = 0;
-    $scope.counter = 0;
-    $scope.name = "JJJ";
-    $scope.sl = shoppingList;
+  ParentController1.$inject = ['$scope'];
+  function ParentController1($scope) {
+    $scope.parentValue = 1;
+    $scope.pc = this;
+    $scope.pc.parentValue = 1;
+  }
 
-    $scope.showNumberOfWatchers = function() {
-          console.log("Number of Watchers: ", $scope.$$watchersCount );
-    };
+  ChildController1.$inject = ['$scope'];
+  function ChildController1($scope){
+  }
 
-    $scope.countOnce = function () {
-      $scope.onceCounter = 1;
-      console.log("once function");
-    };
+  function ParentController2() {
+    var vm = this;
+    vm.value = 1;
+  }
 
-    $scope.upCounter = function () {
-      $timeout( function (){
-        console.log("counter called");
-      }, 1000);
-    };
-
-
-    // $scope.upCounter = function () {
-    //   setTimeout( function (){
-    //     $scope.$apply( function() {
-    //       $scope.counter++;
-    //       console.log("counter called");
-    //     });
-    //   }, 1000 );
-    // };
-
-    $scope.$watch(function() {
-      console.log("Digest loop fired!");
-    } );
-
-    // $scope.$watch('onceCounter', function (newValue, oldValue){
-    //   console.log("onceCounter oldValue: ", oldValue);
-    //   console.log("onceCounter newValue: ", newValue);
-    // });
-    //
-    // $scope.$watch('counter', function (newValue, oldValue){
-    //   console.log("counter oldValue: ", oldValue);
-    //   console.log("counter newValue: ", newValue);
-    // });
-
-  };
+  ChildController2.$inject = ['$scope'];
+  function ChildController2($scope){
+    var vm = this;
+    vm.value = 5;
+    console.log("ChildController2 $scope: ", $scope );
+  }
 
 
-/*
-
-*/
 })();

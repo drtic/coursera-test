@@ -1,26 +1,19 @@
 (function(){
   var shoppinglist = [
-    { name: "Cookies", quantity: 10},
-    { name: "Cookies1", quantity: 11},
-    { name: "Cookies2", quantity: 12},
-    { name: "Cookies3", quantity: 13},
-    { name: "Cookies4", quantity: 14}
+    { name: "Cookies-A", quantity: 10},
+    { name: "Cookies-B", quantity: 11},
+    { name: "Cookies-C", quantity: 12},
+    { name: "Cookies-D", quantity: 13},
+    { name: "Cookies-E", quantity: 14},
+    { name: "Cookies-F", quantity: 15}
   ];
 
   angular.module('ShoppingListCheckOff', [])
-    .controller( 'ShoppingListCheckOffController', ShoppingListCheckOffController)
     .controller( 'BoughtController', BoughtController)
     .controller( 'ToBuyController', ToBuyController)
-    .service( 'ShoppingListService', ShoppingListService);
+    .service( 'ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-ShoppingListCheckOffController.$inject = ['$scope'];
-function ShoppingListCheckOffController($scope) {
-
-}
-
-//ShoppingListService.$inject =
-
-function ShoppingListService() {
+function ShoppingListCheckOffService() {
   var service = this;
 
   var toBuyItems = shoppinglist;
@@ -38,25 +31,25 @@ function ShoppingListService() {
     var itemtoremove = toBuyItems[index];
     boughtItems.push( itemtoremove );
     toBuyItems.splice(index, 1);
-
-    console.log("remove", index);
+    //console.log("remove", index);
   };
-
 }
 
-BoughtController.$inject = ['$scope', 'ShoppingListService'];
-function BoughtController($scope, ShoppingListService) {
-  $scope.Bought = ShoppingListService.getBoughtList();
+BoughtController.$inject = ['ShoppingListCheckOffService'];
+function BoughtController(ShoppingListCheckOffService) {
+  var alreadyBought = this;
+
+  alreadyBought.Bought = ShoppingListCheckOffService.getBoughtList();
 }
 
-ToBuyController.$inject = ['$scope', 'ShoppingListService'];
-function ToBuyController($scope, ShoppingListService) {
+ToBuyController.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService) {
   var toBuyList = this;
 
-  toBuyList.toBuy = ShoppingListService.getToBuyList();
-  toBuyList.removeItem = ShoppingListService.moveToBoughtList;
+  toBuyList.removeItem = ShoppingListCheckOffService.moveToBoughtList;
+  toBuyList.toBuy = ShoppingListCheckOffService.getToBuyList();
 
-  console.log("In controller", toBuyList.toBuy );
+  //console.log("In controller", toBuyList.toBuy.length );
 }
 
 })();
