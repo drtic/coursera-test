@@ -8,14 +8,55 @@
   ];
 
   angular.module('ShoppingListCheckOff', [])
-    .controller( 'ShoppingListCheckOffController', ShoppingListCheckOffController);
-
+    .controller( 'ShoppingListCheckOffController', ShoppingListCheckOffController)
+    .controller( 'BoughtController', BoughtController)
+    .controller( 'ToBuyController', ToBuyController)
+    .service( 'ShoppingListService', ShoppingListService);
 
 ShoppingListCheckOffController.$inject = ['$scope'];
 function ShoppingListCheckOffController($scope) {
-  $scope.toBuy = shoppinglist;
 
-  
+}
+
+//ShoppingListService.$inject =
+
+function ShoppingListService() {
+  var service = this;
+
+  var toBuyItems = shoppinglist;
+  var boughtItems = [];
+
+  service.getToBuyList = function() {
+    return toBuyItems;
+  };
+
+  service.getBoughtList = function() {
+    return boughtItems;
+  };
+
+  service.moveToBoughtList = function(index) {
+    var itemtoremove = toBuyItems[index];
+    boughtItems.push( itemtoremove );
+    toBuyItems.splice(index, 1);
+
+    console.log("remove", index);
+  };
+
+}
+
+BoughtController.$inject = ['$scope', 'ShoppingListService'];
+function BoughtController($scope, ShoppingListService) {
+  $scope.Bought = ShoppingListService.getBoughtList();
+}
+
+ToBuyController.$inject = ['$scope', 'ShoppingListService'];
+function ToBuyController($scope, ShoppingListService) {
+  var toBuyList = this;
+
+  toBuyList.toBuy = ShoppingListService.getToBuyList();
+  toBuyList.removeItem = ShoppingListService.moveToBoughtList;
+
+  console.log("In controller", toBuyList.toBuy );
 }
 
 })();
