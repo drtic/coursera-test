@@ -13,7 +13,9 @@
     var narrowit = this;
 
     narrowit.fn1 = function() {
-      MenuSearchService.getMatchedMenuItems('------')
+      console.log( narrowit.searchTerm );
+
+      MenuSearchService.getMatchedMenuItems(narrowit.searchTerm)
       .then( function(response){
           narrowit.found = response;
         }
@@ -37,13 +39,11 @@
            method: "GET",
            url: ( ApiBasePath + "/menu_items.json")
          }).then(function(result){
-              var searchItem = 'chicken';
-
               var foundItems = [];
               var n = result.data.menu_items.length;
               for (var i =0; i < n; i++ ) {
                 var itm = result.data.menu_items[i];
-                if (itm.description.toLowerCase().indexOf(searchItem) != -1) {
+                if (itm.description.toLowerCase().indexOf(searchTerm) != -1) {
                     foundItems.push(itm);
                 }
               }
@@ -60,7 +60,13 @@
 
   function foundItems() {
     return {
-      template: '<B>AAAA</B>'
+      templateUrl: 'listItem.tpl',
+      restrict: "E",
+      scope: {
+        foundItems: '=foundItems1',
+        onRemove: '='
+      },
+
     };
   };
 
