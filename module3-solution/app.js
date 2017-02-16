@@ -13,7 +13,18 @@
     var narrowit = this;
 
     narrowit.fn1 = function() {
-      console.log(MenuSearchService.getMatchedMenuItems('------'));
+      MenuSearchService.getMatchedMenuItems('------')
+      .then( function(response){
+          narrowit.found = response;
+        }
+      ).catch(function(error){
+
+      });
+    };
+
+    narrowit.removeItem = function(index) {
+      console.log("---" + index + "---");
+      narrowit.found.splice(index, 1);
     };
   };
 
@@ -22,12 +33,23 @@
     var service = this;
 
     service.getMatchedMenuItems = function getMatchedMenuItems(searchTerm) {
-      var response = $http({
+      return $http({
            method: "GET",
            url: ( ApiBasePath + "/menu_items.json")
-         });
+         }).then(function(result){
+              var searchItem = 'chicken';
 
-      return response;
+              var foundItems = [];
+              var n = result.data.menu_items.length;
+              for (var i =0; i < n; i++ ) {
+                var itm = result.data.menu_items[i];
+                if (itm.description.toLowerCase().indexOf(searchItem) != -1) {
+                    foundItems.push(itm);
+                }
+              }
+              // serarch in description
+              return foundItems;
+         });
     };
     // function getMatchedMenuItems(searchTerm)
     // {
