@@ -54,4 +54,5 @@ input[type="text"] {
 .error {
   color: Blue;
   font-weight: bold;
+  /*display: none;*/
 }

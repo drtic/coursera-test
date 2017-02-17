@@ -30,7 +30,7 @@
     };
 
     narrowit.removeItem = function(index) {
-      //console.log("---" + index + "---");
+      console.log("---" + index + "---");
       narrowit.found.splice(index, 1);
     };
   };
@@ -64,8 +64,11 @@
       restrict: "E",
       scope: {
         found: '<',
-        onRemove: '<'
+        onRemove: '&'
       },
+      controller: NarrowItDownController,
+      controllerAs: 'list',
+      bindToController: true
     };
   };
 })();
