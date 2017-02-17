@@ -12,20 +12,25 @@
   function NarrowItDownController(MenuSearchService) {
     var narrowit = this;
 
-    narrowit.fn1 = function() {
-      console.log( narrowit.searchTerm );
+    narrowit.searchfor = function() {
+      //console.log( narrowit.searchTerm );
+
+      if(narrowit.searchTerm === ""){
+        narrowit.found = [];
+        return;
+      }
 
       MenuSearchService.getMatchedMenuItems(narrowit.searchTerm)
       .then( function(response){
           narrowit.found = response;
         }
       ).catch(function(error){
-
+        console.log("Error: getMatchedMenuItems " + error );
       });
     };
 
     narrowit.removeItem = function(index) {
-      console.log("---" + index + "---");
+      //console.log("---" + index + "---");
       narrowit.found.splice(index, 1);
     };
   };
@@ -38,7 +43,7 @@
       return $http({
            method: "GET",
            url: ( ApiBasePath + "/menu_items.json")
-         }).then(function(result){
+         }).then(function(result) {
               var foundItems = [];
               var n = result.data.menu_items.length;
               for (var i =0; i < n; i++ ) {
@@ -51,11 +56,6 @@
               return foundItems;
          });
     };
-    // function getMatchedMenuItems(searchTerm)
-    // {
-    //
-    // };
-
   };
 
   function foundItems() {
@@ -63,38 +63,9 @@
       templateUrl: 'listItem.tpl',
       restrict: "E",
       scope: {
-        foundItems: '=foundItems1',
+        found: '<',
         onRemove: '='
       },
-
     };
   };
-
-  // MenuCategoriesController.$inject = ['MenuCategoriesService'];
-  // function MenuCategoriesController(MenuCategoriesService) {
-  //   var menu = this;
-  //
-  //   var promise = MenuCategoriesService.getMenuCategories();
-  //
-  //   promise.then({
-  //     menu.categories = response.data;
-  //   })
-  //   .catch(function(error) {
-  //     console.log("Error 1");
-  //   });
-  // }
-
-
-  // MenuGetLIst = ['$http', 'ApiBasePath']
-  // function getMatchedMenuItems = function($http, ApiBasePath) {
-  //   var service = this;
-  //
-  //   service.getMenuCategories = function() {
-  //     var response = $http({
-  //       method: "GET",
-  //       url: ( ApiBasePath + "/categories.json")
-  //     });
-  //     return response;
-  //   };
-  // };
 })();
