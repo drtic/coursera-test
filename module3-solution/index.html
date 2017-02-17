@@ -18,12 +18,12 @@
     </div>
 
     <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="narrowit.fn1()">Narrow It Down For Me!</button>
+      <button class="btn btn-primary" ng-click="narrowit.searchfor()">Narrow It Down For Me!</button>
     </div>
-    <br/><hr/>
+    <br/>
+    <hr/>
     <div>
-      <!-- found-items should be implemented as a component -->
-      <found-items found-items1="narrowit.found" on-remove="narrowit.removeItem"></found-items>
+      <found-items found="narrowit.found" on-remove="narrowit.removeItem(index)" />
     </div>
   </div>
 
