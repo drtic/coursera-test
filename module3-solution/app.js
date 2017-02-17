@@ -64,7 +64,7 @@
       restrict: "E",
       scope: {
         found: '<',
-        onRemove: '='
+        onRemove: '<'
       },
     };
   };
