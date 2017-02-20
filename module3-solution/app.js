@@ -48,7 +48,7 @@
               var n = result.data.menu_items.length;
               for (var i =0; i < n; i++ ) {
                 var itm = result.data.menu_items[i];
-                if (itm.description.toLowerCase().indexOf(searchTerm) != -1) {
+                if (itm.description.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1) {
                     foundItems.push(itm);
                 }
               }
