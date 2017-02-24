@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('menuapp', ['cateogories'])
+    angular.module('MenuApp', ['cateogories'])
     .controller('menucontroller', menucontroller )
     ;
 
