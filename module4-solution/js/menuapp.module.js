@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    angular.module('MenuApp', ['cateogories'])
+    angular.module('MenuApp', ['ui-router'])
     .controller('menucontroller', menucontroller )
     ;
 
