@@ -2,10 +2,10 @@
   'use strict';
 
   angular.module('MenuApp')
-  .controller('cateogoriesController', cateogoriesController)
+  .controller('categoriesController', categoriesController)
   ;
 
-  function cateogoriesController(){
+  function categoriesController(){
 
   };
 

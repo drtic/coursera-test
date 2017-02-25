@@ -1,12 +1,17 @@
 (function(){
     'use strict';
 
-    angular.module('MenuApp', ['ui-router'])
-    .controller('menucontroller', menucontroller )
+    angular.module('MenuApp', ['ui.router'])
+    .controller('MenuController', MenuController )
     ;
 
-    function menucontroller() {
+    MenuController.$inject = ['MenuDataService'];
+    function MenuController(MenuDataService) {
+      var mc = this;
 
+      mc.myfunc = function() {
+        console.log("here");
+      };
     };
 
 })();

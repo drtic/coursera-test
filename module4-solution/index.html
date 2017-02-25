@@ -2,16 +2,25 @@
 <html lang="en">
   <head>
     <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.v0.3.1.min.js"></script>
+    <script src="lib/angular-ui-router.v0.4.2.min.js"></script>
+    <!-- <script src="lib/angular-ui-router.v0.3.1.min.js"></script> -->
 
     <!-- modules -->
     <script src="js/menuapp.module.js"></script>
     <script src="js/categories.component.js"></script>
+    <script src="js/menudata.service.js"></script>
+    <script src="js/routes.js"></script>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body ng-app="MenuApp">
+    <div class="tab"></div>
+    <a ui-sref="categories">See our Premade No Cookie Shopping List!</a>
+    <hr>
     <ui-view></ui-view>
+    <div ng-controller="MenuController as mycontroller">
+      <button ng-click="mycontroller.myfunc();">Click</button>
+    </Div>
   </body>
 </html>
