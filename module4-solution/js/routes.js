@@ -13,7 +13,17 @@
         url: '/',
         templateUrl: 'templates/home.template.html'
       })
-      .state('categories',{
+      .state('items', {
+        url: '/items',
+        templateUrl: 'templates/main_items.template.html',
+        controller: 'ItemsController as itemsList',
+        resolve: {
+          items: ['MenuDataService', function(MenuDataService) {
+            return MenuDataService.getItemForCategory();
+          }]
+        }
+      })
+      .state('categories', {
         url: '/categories',
         templateUrl: 'templates/main_categories.template.html',
         controller: 'CategoriesController as mainList',

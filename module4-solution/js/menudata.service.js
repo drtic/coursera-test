@@ -22,7 +22,8 @@
       return $http({
         method: "GET",
         url: (ApiBasePath + "/menu_items.json"),
-        params: { category: categoryShortName }
+        // params: { category: categoryShortName }
+        params: { category: 'L' }
       }).then(function(result){
         return result;
       });
