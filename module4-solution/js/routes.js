@@ -15,11 +15,13 @@
       })
       .state('categories',{
         url: '/categories',
-        templateUrl: 'templates/categories.template.html',
-        controller: 'categoriesController as mainList',
-        resolve: ['MenuDataService', function(MenuDataService){
-          return MenuDataService.getAllCategories();
-        }]
+        templateUrl: 'templates/main_categories.template.html',
+        controller: 'CategoriesController as mainList',
+        resolve: {
+          items: ['MenuDataService', function(MenuDataService) {
+            return MenuDataService.getAllCategories();
+          }]
+        }
       });
 
       //Set up UI states
