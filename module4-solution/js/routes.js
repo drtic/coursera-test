@@ -11,15 +11,16 @@
       $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'templates/home.template.html'
+        template: '<a ui-sref="categories">See our Categories List!</a>'
       })
       .state('items', {
-        url: '/items',
+        url: '/items/{categoryId}',
         templateUrl: 'templates/main_items.template.html',
         controller: 'ItemsController as itemsList',
         resolve: {
-          items: ['MenuDataService', function(MenuDataService) {
-            return MenuDataService.getItemForCategory();
+          items: ['$stateParams', 'MenuDataService',
+            function($stateParams, MenuDataService) {
+              return MenuDataService.getItemsForCategory($stateParams.categoryId);
           }]
         }
       })
