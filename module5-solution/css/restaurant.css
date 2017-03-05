@@ -5,6 +5,22 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
+input {
+  color: blue;
+}
+
+button {
+  color: blue;
+}
+
+.ng-touched.ng-valid {
+  border: 2px green solid;
+}
+
+.ng-touched.ng-invalid {
+  border: 2px red solid;
+}
+
 .initial-loading {
   margin-top: 60px;
 }

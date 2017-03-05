@@ -1,4 +1,67 @@
-<h1>
-  <B>Nie som tu!!!
-  </B>
-</h1>
+<div class="container">
+<fieldset>
+  <legend>SignUp</legend>
+  <form name="signupForm" novalidate>
+    <input type="text" type="text" name="firstname" placeholder="First name"
+          ng-model="reg.user.firstname"
+          minlenght="1"
+          required />
+          {{reg.user.firstname}}
+          <span ng-if="( signupForm.firstname.$error.minlength ||
+              signupForm.firstname.$error.required) && signupForm.firstname.$touched">
+              <- Required
+          </span>
+    <br/>
+    <input type="text" type="text" name="lastname" placeholder="Last name"
+          ng-model="reg.user.lastname"
+          minlenght="1"
+          required />
+          {{reg.user.lastname}}
+          <span ng-if="( signupForm.lastname.$error.minlength ||
+              signupForm.lastname.$error.required) && signupForm.lastname.$touched">
+              <- Required
+          </span>
+    <br/>
+    <input type="email" name="email" placeholder="Email"
+          ng-model="reg.user.email"
+          required>
+
+        <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+    <br/>
+
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="reg.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+
+        <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+
+    <br/>
+
+    <input type="text" name="favoriteItem" placeholder="Your favorite item"
+        ng-model="reg.user.favoriteitem">
+    <span ng-if="reg.menuitemnotfound">
+      No such menu number exists
+    </span>
+
+
+
+    <br/>
+
+<!-- ng-disabled="signupForm.$invalid" -->
+      <button  ng-click="reg.submit()">Submit</button>
+
+      <div id="info" ng-if="reg.completed">
+        Username: {{ reg.user.firstname }} {{reg.user.lastname}}<br>
+        Email: {{ reg.user.email}} <br>
+        Phone: {{ reg.user.phone }}
+
+        {{reg.myinfo}}
+      </div>
+
+  </form>
+</fieldset>
+</div>
