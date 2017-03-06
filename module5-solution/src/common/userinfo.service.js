@@ -21,7 +21,7 @@
     }
 
     service.setUserInfo = function(i) {
-      console.log("From service: ", i);
+      //console.log("From service: ", i);
       userInfo = i;
       registered = true;
     }

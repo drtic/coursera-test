@@ -6,7 +6,7 @@
           ng-model="reg.user.firstname"
           minlenght="1"
           required />
-          {{reg.user.firstname}}
+          <!-- {{reg.user.firstname}} -->
           <span ng-if="( signupForm.firstname.$error.minlength ||
               signupForm.firstname.$error.required) && signupForm.firstname.$touched">
               <- Required
@@ -16,7 +16,7 @@
           ng-model="reg.user.lastname"
           minlenght="1"
           required />
-          {{reg.user.lastname}}
+          <!-- {{reg.user.lastname}} -->
           <span ng-if="( signupForm.lastname.$error.minlength ||
               signupForm.lastname.$error.required) && signupForm.lastname.$touched">
               <- Required
@@ -43,6 +43,7 @@
 
     <input type="text" name="favoriteItem" placeholder="Your favorite item"
         ng-model="reg.user.favoriteitem">
+
     <span ng-if="reg.menuitemnotfound">
       No such menu number exists
     </span>
@@ -51,13 +52,13 @@
 
     <br/>
 
-<!-- ng-disabled="signupForm.$invalid" -->
-      <button  ng-click="reg.submit()">Submit</button>
+    <!--  -->
+      <button  ng-disabled="signupForm.$invalid" ng-click="reg.submit()">Submit</button>
 
       <div id="info" ng-if="reg.completed">
-        Username: {{ reg.user.firstname }} {{reg.user.lastname}}<br>
+        <!-- Username: {{ reg.user.firstname }} {{reg.user.lastname}}<br>
         Email: {{ reg.user.email}} <br>
-        Phone: {{ reg.user.phone }}
+        Phone: {{ reg.user.phone }} -->
 
         {{reg.myinfo}}
       </div>

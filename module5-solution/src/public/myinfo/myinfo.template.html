@@ -4,9 +4,12 @@
 
   <div ng-if="myinfo.registered">
       Name:&nbsp;<span>{{myinfo.firstName}} {{myinfo.lastName}}</span><br/>
-      <span>{{myinfo.email}}</span><br/>
-      <span>{{myinfo.telNumber}}</span><br/>
-      <span>{{myinfo.favoriteItem}}</span><br/>
+      Email:&nbsp;<span>{{myinfo.email}}</span><br/>
+      Phone #:&nbsp;<span>{{myinfo.telNumber}}</span><br/>
+      My Favorite item:<br/><span>{{myinfo.favoriteItem.name}}</span><br/>
+      <img ng-src="{{myinfo.favoriteItem.url}}"/>
+      <br/>
+      <span>{{myinfo.favoriteItem.description}}</span><br/>
   </div>
 
   <div ng-if="myinfo.registered == false">
