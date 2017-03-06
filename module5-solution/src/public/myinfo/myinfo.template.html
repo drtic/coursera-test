@@ -1,0 +1,17 @@
+<div class="container">
+<fieldset>
+  <legend>My info</legend>
+
+  <div ng-if="myinfo.registered">
+      Name:&nbsp;<span>{{myinfo.firstName}} {{myinfo.lastName}}</span><br/>
+      <span>{{myinfo.email}}</span><br/>
+      <span>{{myinfo.telNumber}}</span><br/>
+      <span>{{myinfo.favoriteItem}}</span><br/>
+  </div>
+
+  <div ng-if="myinfo.registered == false">
+    Not Signed up Yet!
+    <a href="#" ui-sref="signup">Sign Up Now!<a>
+  </div>
+
+</fieldset>
